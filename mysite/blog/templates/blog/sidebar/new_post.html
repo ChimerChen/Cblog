@@ -1,0 +1,10 @@
+{% load category %}
+{% get_new_post as post_list %}
+
+{% for post in post_list %}
+    <ul>
+        <li class="is-size-6"> 
+            <a href="{% url 'blog:post_detail' post.id %}"  class="sidebar-a" >{{post.title}}</a>
+        </li>
+    </ul>
+{% endfor %}

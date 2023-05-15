@@ -1,0 +1,74 @@
+pre{
+    background-color:  rgb(39, 40, 34);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+a{
+    
+    color: #1d1d1f;
+    text-decoration: none;
+}
+.sidebar-a{
+    font-size: 0.85em;
+    color:#5d5d60;
+}
+.sidebar-a:hover{
+	text-decoration:underline;/*指鼠标在链接*/
+    color: #2997ff;
+}
+
+.navbar{
+    background-color:#434344;
+    margin:0;
+}
+
+.navbar a{
+    color:#f5f5f7;
+    font-size: 0.85em;
+}
+
+.navbar a:hover{
+    background-color: black;
+    color:#f5f5f7;
+}
+
+body{
+    background-color: #fbfbfd
+}
+
+.footer{
+    background-color: #434344;
+    padding-bottom: 1em;
+    padding-top: 1.25em;
+    margin-top: 1em;
+}
+
+.footer{
+    color: #f5f5f7;
+}
+
+.footer a{
+    color: #f5f5f7;
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#wrapper {
+    min-height: 100%;
+    margin-bottom: -60px;
+}
+
+#footer,
+#push {
+    height: 60px;
+}
+
+#desc p{
+    font-size: 0.85em;
+    color:#5d5d60;
+}

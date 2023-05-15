@@ -1,0 +1,10 @@
+{% load category %}
+{% get_hot_post as post_list %}
+
+{% for post in post_list %}
+    <ul>
+        <li>
+            <a href="{% url 'blog:post_detail' post.id %}" class="sidebar-a">{{post.title}}</a>
+        </li>
+    </ul>
+{% endfor %}

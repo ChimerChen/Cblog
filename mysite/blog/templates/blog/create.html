@@ -1,0 +1,121 @@
+<!-- extends表明此页面继承自 base.html 文件 -->
+{% extends "blog/base.html" %} 
+<!-- 写入 base.html 中定义的 title -->
+{% block title %} 发布文章 {% endblock title %}
+<!-- 写入 base.html 中定义的 content -->
+{% block content %}
+<!-- 写文章表单 -->
+
+
+<form action="" method="post">
+    {% csrf_token %}
+   <div class="block mt-6 mr-3" style="width:70%">
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">文章标题</label>
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text" placeholder="标题" name="title">
+                    <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">文章分类</label>
+        </div>
+        <div class="field-body">
+            <div class="field is-narrow">
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        <select name="category">
+                    {%for category in category_list %}
+                        <option value="{{category.id}}">{{category}}</option>
+                    {% endfor %}
+                </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block mt-3 mr-3" style=>
+    <div class=" block field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">文章标签</label>
+        </div>
+        <div class="field-body">
+            <div class="field is-narrow">
+                <div class="control">
+                    <div class="is-fullwidth" style="width:100%">
+                        <input type="text" class="form-control"  id="tags"  name="tags" style="width:30em; height:2.5em;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="field is-horizontal" >
+        <div class="field-label is-normal">
+            <label class="label">文章简介</label>
+        </div>
+        <div class="field-body" style="">
+            <div class="" style="width:100%">
+
+               <textarea name="desc" id=""  rows="7" style="width:100%">
+                    
+               </textarea>
+                    
+            </div>
+        </div>
+    </div>
+
+
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">正文</label>
+        </div>
+        <div class="field-body" style="">
+            <div class="" style="width:100%">
+                <div class="" style="width:100%">
+                    {{ article_post_form.media }} {{ article_post_form.content }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field is-horizontal is-grouped-right">
+        <div class="field-label">
+            <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary">
+                发布
+              </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+{% endblock content %}
+
+
+{% block script %}
+<script>
+    $(".django-ckeditor-widget").removeAttr('style');
+</script>
+{% endblock %}
