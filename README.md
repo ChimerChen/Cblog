@@ -1,3 +1,7 @@
+毕业设计-----------基于Django框架的博客系统设计
+
+
+
 1.激活虚拟环境
 env\Scripts\activate
 
