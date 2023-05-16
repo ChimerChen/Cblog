@@ -85,7 +85,7 @@ def search(request):
     if tag and tag != 'None':
         post_list = post_list.filter(tags__name__in=[tag])
     # 分页方法
-    paginator = Paginator(post_list, 8)  # 第二个参数2代表每页显示几个
+    paginator = Paginator(post_list, 8)  # 第二个参数代表每页显示几个
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -115,7 +115,7 @@ def archives(request,year,month):
 
 
 
-#文章发布视图
+#文章发布
 @login_required(login_url='users:login') 
 def article_create(request):
     # 判断用户是否提交数据
@@ -126,14 +126,9 @@ def article_create(request):
         if article_post_form.is_valid():
             # 保存数据，但暂时不提交到数据库中
             new_article = article_post_form.save(commit=False)
-            # 指定数据库中 id=1 的用户为作者
-            # 如果你进行过删除数据表的操作，可能会找不到id=1的用户
-            # 此时请重新创建用户，并传入此用户的id
             new_article.owner = User.objects.get(id=request.user.id)
-            
             # 将新文章保存到数据库中
             new_article.save()
-
             # 保存 tags 的多对多关系
             article_post_form.save_m2m()
             # 完成后返回到文章列表
@@ -142,7 +137,6 @@ def article_create(request):
         else:
             print(article_post_form.errors)
             return HttpResponse("表单内容有误，请重新填写。")
-           
     # 如果用户请求获取数据
     else:
         # 创建表单类实例

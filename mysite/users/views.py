@@ -24,7 +24,7 @@ class MyBackend(ModelBackend):
 
       
         
-
+#用户登录
 def login_view(request):
     if request.method != 'POST':
         form = LoginForm()
@@ -41,10 +41,11 @@ def login_view(request):
                 return redirect('users:user_profile')
             else:
                 # 验证不通过提示！
-                return HttpResponse("账号或者密码错误！")
+                return HttpResponse("密码错误！")
     context = {'form':form}
     return render(request, 'users/login.html',context) 
 
+#用户注册
 def register(request):
     if request.method != 'POST':
         form = RegisterForm()
@@ -144,7 +145,7 @@ def editor_users(request):
             user_profile_form = UserProfileForm(request.POST, request.FILES)  # 空表单，直接获取空表单的数据保存
             if form.is_valid() and user_profile_form.is_valid():
                 form.save()
-                # commit=False 先不保存，先把数据放在内存中，然后再重新给指定的字段赋值天剑进去，提交保存新的数据
+                # commit=False 先不保存，先把数据放在内存中，然后再重新给指定的字段赋值填入进去，提交保存新的数据
                 new_user_profile = user_profile_form.save(commit=False)
                 new_user_profile.owner = request.user
                 new_user_profile.save()

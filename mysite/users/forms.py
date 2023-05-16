@@ -10,6 +10,13 @@ class LoginForm(forms.Form):
         'class': 'input', 'placeholder':'密码'
     }))
 
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        exists = User.objects.filter(username=username).exists()
+        if not exists:
+            raise forms.ValidationError('用户不存在')
+        return username
+
     def clean_password(self):
         username = self.cleaned_data.get('username')
         password =self.cleaned_data.get('password')
