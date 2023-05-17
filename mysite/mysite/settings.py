@@ -204,4 +204,4 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # 静态文件收集目录
-STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+STATIC_ROOT = '/var/www/Cblog/mysite/static/'
