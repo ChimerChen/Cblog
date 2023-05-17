@@ -196,3 +196,12 @@ EMAIL_PORT = 465                     # 用于中定义的SMTP服务器的端口
 EMAIL_USE_SSL = True             # 是否使用隐式的安全连接
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# 关闭调试模式
+DEBUG = False
+
+# 允许的服务器
+ALLOWED_HOSTS = ['*']
+
+# 静态文件收集目录
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
