@@ -131,7 +131,6 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Custom',
         # 工具栏按钮
         'disallowedContent':'img{width,height};img[width,height]',
-        
         'toolbar_Custom': [
             # 表情 代码块
             ['Preview','Smiley', 'CodeSnippet'], 
@@ -145,11 +144,8 @@ CKEDITOR_CONFIGS = {
             ['NumberedList', 'BulletedList'],
             # 最大化
             ['Maximize','Autoformat','Autosave'],
-
             ['Image'],
-
             ['Table','Table toolbar'],
-
             ['heading']
         ],
         # 加入代码块插件
@@ -198,10 +194,10 @@ EMAIL_USE_SSL = True             # 是否使用隐式的安全连接
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # 关闭调试模式
-DEBUG = False
+DEBUG = True
 
-# 允许的服务器
+# 允许访问的服务器，*表示所有
 ALLOWED_HOSTS = ['*']
 
 # 静态文件收集目录
-STATIC_ROOT = '/var/www/Cblog/mysite/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
